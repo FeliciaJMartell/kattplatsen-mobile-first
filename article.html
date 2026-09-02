@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katter som söker ett nytt hem - Kattplatsen</title>
+
+    <link rel="stylesheet" href="hemsida.css">
+</head>
+
+<!--Jag valde att döpa body id till "sidatva" för att det inte skulle bli #article article i min cssfil-->
+
+<body id="sidatva">
+
+    <header>
+        <h1>Katt platsen</h1>
+        <h2>Katter som söker ett nytt hem</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Startsida</a></li>
+                <li><a href="article.html">Hjälp katter</a></li>
+                <li><a href="om-oss.html">Om oss</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <!--Jag lägger en div här så att flexboxen kan dela upp texten och bilden, så att det blir en kolumn med bild och en med text. 
+Inte tre kolumner bredvid varandra.
+Section lägger jag så att main bara har två delar, artiklar och aside, annars hade det varit tre delar, artikel, artikel och aside. -->
+        <section>
+            <article>
+                <img src="bilder/hemloskatt1.jpg"
+                    alt="vitt katt med blåa ögon, sitter på en gräsplätt och kollar mot himlen">
+                <div>
+                    <h3>Pelle söker nytt hem! </h3>
+                    <p>Pelle är en väldigt mysig katt, dessvärre ville inte hans föräldrar ha honom, så nu söker han nya
+                        kärleksfulla föräldrar. </p>
+                </div>
+            </article>
+            <article>
+                <img src="bilder/hemloskatt2.jpg"
+                    alt="sköldpadds liknande katt, med svansen rakt upp, smyger fram genom gräset">
+                <div>
+                    <h3>Tina söker nytt hem!</h3>
+                    <p>Tina hittades övergiven vid en soptunna, hon mår bra men söker ett nytt underbart hem.</p>
+                </div>
+            </article>
+        </section>
+
+        <aside>
+            <h3>Intresserad?</h3>
+            <p>Ring gärna mig på detta nummer: 070-123 45 67
+                eller skicka mig ett mejl på hjalpkatter@gmail.com</p>
+            <!--Jag la till target blank, så att sidan öppnas i ny flik, rel noopener är för säkerhet, 
+    så att den andra sidan inte får tillgång till window.opener-objekt, och att någon inte kan manipulera länken och skicka 
+    besökare till en nätfiskesida -->
+            <ul>
+                <li><a href="https://jordbruksverket.se/djur/hundar-katter-och-smadjur/katter" target="_blank"
+                        rel="noopener">Jordbruksverket</a></li>
+                <li><a href="https://www.purina.se/hitta-ett-husdjur/kattraser" target="_blank" rel="noopener">Hitta
+                        rätt ras för dig</a></li>
+                <li><a href="https://djurensvanner.se/vaxjo/hemlosa/" target="_blank" rel="noopener">Hemlösa katter
+                        Växjö</a></li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <footer>
+        <p>Copyright © 2026 Kattplatsen </p>
+        <p>Felicia Johansson Martell</p>
+        <p>WU26</p>
+
+
+    </footer>
+</body>
+
+</html>

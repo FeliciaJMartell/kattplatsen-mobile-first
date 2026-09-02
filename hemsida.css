@@ -1,0 +1,285 @@
+/*================================
+Gäller alla sidor
+=================================*/
+
+/*Här säger jag till att alla element ska ha box-sizing, det betyder att alla element 
+ska räkna in padding och border i sin width och height, annars räknas det utanför 
+elementet och kan göra att elementet blir större än vad man vill,
+Jag använder before och after för om jag skapar pseudoelement ska även de räkna bredden på det nya sättet, detta eftersom * missar dom.*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*bilderna kommer inte bli större än element de ligger i, max-width 100% och height auto gör att bilden följer storleken på elementet, 
+hade jag inte gjort detta så hade troligtvis inte hela bilden visats på en mobil tex. */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*detta är grunden för alla mina element, om jag vill ändra något på någon sida så behöver jag göra en #sidatva tex*/
+body {
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+header {
+    color: black;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+footer p {
+    font-size: 0.8rem;
+    font-style: italic;
+    text-align: left;
+    margin: 0;
+}
+
+/*jag skriver , efter varje element för att få med alla element och att de ska bete sig likadana, alla ska ha width 100%,
+padding använder jag för att allt inte ska ligga klistrat. 
+jag lägger 0 1 rem för alla för sidopadding och väljer sedan top & bottom för varje element, jag lägger 0 i början för annars hade det gällt
+för alla sidor och 1 för att då gäller det bara åt sidorna.
+*/
+header,
+main,
+footer {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+header {
+    padding-top: 2rem;
+}
+
+main {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+footer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+
+
+/* jag vill att listan inte ska ha punkter och att den ska ligga helt till vänster, därför tar jag bort padding-left.*/
+nav ul {
+    list-style: none;
+    padding-left: 0;
+
+}
+
+
+
+/*Gör om så att min lista lägger sig i små boxar istället. Display block gör att man kan klicka vart som helst i rutan.
+På mobilen ligger de staplade under varandra, i media quryn längre ner så har jag lagt dom i rad med display:flex när plats finns. */
+nav a {
+    display: block;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: rgb(214 191 191);
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+
+/*jag vill att boxen ska fyllas med färg när muspekaren åker över*/
+nav a:hover {
+    background: lightgray;
+}
+
+
+/*Lägger till katter istället för punkter, */
+nav a::before {
+    content: "🐈";
+    padding-right: 0.5rem;
+}
+
+/*================================
+SIDA 1 - Kattplatsen
+=================================*/
+
+/* ville att bilden skulle hamna i mitten och behövde göra bilden till ett blockelement som tar hela raden. en bild är inline som standard 
+och då kan man inte centrera den. Bilden är som ett ord bara och behöver sitt eget utrymme för att bli centrerad */
+#start main img {
+    display: block;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+
+/*================================
+SIDA 2 - Katter som söker hem
+=================================*/
+
+#sidatva article p {
+    font-size: 1rem;
+}
+
+/*lägger till en margin bottom så att bilderna inte är klistrade mot varandra, de får även en ram och egen bakgrund. */
+
+#sidatva article {
+    border: 1px solid black;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    background-color: rgb(214 191 191);
+}
+
+#sidatva aside p {
+    font-size: 1rem;
+}
+
+/*snyggar till mina länkar och lägger dom till vänster*/
+
+#sidatva aside ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#sidatva aside a {
+    color: black;
+}
+
+#sidatva aside a:hover {
+    color: rgb(214 191 191);
+}
+
+#sidatva article img {
+    display: block;
+    max-width: 50%;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 3px solid black;
+}
+
+/*================================
+SIDA 3 - Om oss (jag döpte den till om oss först, men blev bara om mig sen, så behöll om oss för enkelhetens)
+=================================*/
+#omoss section:last-of-type p {
+    font-style: italic;
+}
+
+/* jag använder display block så att själva "annons" hamnar på egen rad, 
+men eftersom jag har <P> i min html fil så spelar det egenltigen ingen roll. Mitt P är ett blockelement och hamnar på ny rad av sig själv.
+men om jag skulle skriva utan P så hade jag behövt en block annars hade min text och annons hamnat på samma rad.*/
+#omoss aside::before {
+    content: "Annons";
+   display: block;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    
+}
+
+#omoss aside {
+    border: 1px solid black;
+    padding: 1rem; 
+    border-radius: 8px;
+    background-color: rgb(214 191 191);
+}
+
+#omoss aside p {
+    font-size: 1rem;
+}
+
+/*Detta är för om storleken på skärmen är större än 768px, då ska bredden på header, main och footer vara 750px och centrerad.
+jag har lagt margin 0 auto så att datorn räknar ut själv hur den ska fördela det tomma utrymmet.
+Jag lägger till nav ul & nav a så att min lista lägger sig på rad om platsen finns likaså med sidatva article.
+Lägger till nav li flex, så att alla boxar är lika stora
+*/
+@media (min-width: 768px) {
+
+    header,
+    main,
+    footer {
+        width: 750px;
+        margin: 0 auto;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 0.5rem;
+
+    }
+
+    nav a {
+        margin-bottom: 0;
+    }
+
+    nav li {
+        flex: 1;
+    }
+
+    #sidatva article {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    #sidatva article img {
+        max-width: 40%;
+    }
+
+    #sidatva main {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    #sidatva section {
+        flex: 1;
+    }
+
+    #sidatva aside {
+        width: 200px;
+        flex-shrink: 0;
+    }
+
+    #omoss main {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+    /* Jag har width 220px så att min aside har 220 px, jag lägger en flex shrink så att mina aside alltid behåller 220px
+    och inte krymper ihop.
+    Jag lägger en main > div så att jag bara träffar divarna som ligger inuti main. I detta läget behöver jag egentligen inte > eftersom
+    jag bara har en div i min sida, men hade jag haft fler divar så hade jag behövt den. Så jag använde > ifall jag lägger till fler divar
+    i framtiden. jag lägger flex 1 så som jag gjort tidigare vilket betyder att mina divar får det som blir kvar efter mina
+    aside har tagit sina 220px, jag höjde från 200 till 220 just för att min annons såg pressad ut när jag la till border och
+    har boxing högst upp, vilket då gör att både ramen och paddingen räknas in i 200 px och innehållet får lite mindre plats.*/
+
+    #omoss aside {
+        width: 220px;
+        flex-shrink: 0;
+    }
+
+    #omoss main>div {
+        flex: 1;
+    }
+
+}
